@@ -12,11 +12,11 @@
 
   "repository": {
     "type": "git",
-    "url": "git://github.com/hubot-scripts/hubot-jenkins.git"
+    "url": "https://github.com/balbeko/hubot-jenkins.git"
   },
 
   "bugs": {
-    "url": "https://github.com/hubot-scripts/hubot-jenkins/issues"
+    "url": "https://github.com/balbeko/hubot-jenkins/issues"
   },
 
   "dependencies": {
