@@ -80,6 +80,8 @@ jenkinsDescribe = (msg) ->
     req.get() (err, res, body) ->
         if err
           msg.send "Jenkins says: #{err}"
+        else if res.statusCode == 401
+          msg.send "Invalid credentials"
         else
           response = ""
           try
@@ -127,6 +129,8 @@ jenkinsDescribe = (msg) ->
             req.get() (err, res, body) ->
                 if err
                   msg.send "Jenkins says: #{err}"
+                else if res.statusCode == 401
+                  msg.send "Invalid credentials"
                 else
                   response = ""
                   try
@@ -159,6 +163,8 @@ jenkinsLast = (msg) ->
     req.get() (err, res, body) ->
         if err
           msg.send "Jenkins says: #{err}"
+        else if res.statusCode == 401
+          msg.send "Invalid credentials"
         else
           response = ""
           try
@@ -186,6 +192,8 @@ jenkinsList = (msg) ->
         response = ""
         if err
           msg.send "Jenkins says: #{err}"
+        else if res.statusCode == 401
+          msg.send "Invalid credentials"
         else
           try
             content = JSON.parse(body)
