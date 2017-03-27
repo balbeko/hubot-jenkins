@@ -7,6 +7,7 @@
 # Configuration:
 #   HUBOT_JENKINS_URL
 #   HUBOT_JENKINS_AUTH
+#   HUBOT_JENKINS_DISPLAY_URL
 #
 #   Auth should be in the "user:password" format.
 #
@@ -58,7 +59,10 @@ jenkinsBuild = (msg, buildWithEmptyParameters) ->
         if err
           msg.reply "Jenkins says: #{err}"
         else if 200 <= res.statusCode < 400 # Or, not an error code.
-          msg.reply "(#{res.statusCode}) Build started for #{unescapedJob} #{url}/job/#{job}"
+          u = url
+          if process.env.HUBOT_JENKINS_DISPLAY_URL
+            u = process.env.HUBOT_JENKINS_DISPLAY_URL
+          msg.reply "(#{res.statusCode}) Build started for #{job} #{u}/job/#{job}"
         else if 400 == res.statusCode
           jenkinsBuild(msg, true)
         else
